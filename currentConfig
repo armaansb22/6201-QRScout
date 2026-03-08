@@ -1,0 +1,440 @@
+{
+  "title": "QRScout",
+  "page_title": "Rebuilt",
+  "delimiter": "\t",
+  "teamNumber": 6201,
+  "floatingField": {
+    "show": false,
+    "codeValue": "teamNumber"
+  },
+  "theme": {
+    "light": {
+      "background": "0 0% 100%",
+      "foreground": "0 0% 3.9%",
+      "card": "0 0% 100%",
+      "card_foreground": "0 0% 3.9%",
+      "popover": "0 0% 100%",
+      "popover_foreground": "0 0% 3.9%",
+      "primary": "354.44 71.3% 47.9%",
+      "primary_foreground": "0 85.7% 97.3%",
+      "secondary": "0 0% 96.1%",
+      "secondary_foreground": "0 0% 9%",
+      "muted": "0 0% 96.1%",
+      "muted_foreground": "0 0% 45.1%",
+      "accent": "0 0% 96.1%",
+      "accent_foreground": "0 0% 9%",
+      "destructive": "0 84.2% 60.2%",
+      "destructive_foreground": "0 0% 98%",
+      "border": "0 0% 89.8%",
+      "input": "0 0% 89.8%",
+      "ring": "354.44 71.3% 47.9%",
+      "chart_1": "12 76% 61%",
+      "chart_2": "173 58% 39%",
+      "chart_3": "197 37% 24%",
+      "chart_4": "43 74% 66%",
+      "chart_5": "27 87% 67%"
+    },
+    "dark": {
+      "background": "0 0% 3.9%",
+      "foreground": "0 0% 98%",
+      "card": "0 0% 3.9%",
+      "card_foreground": "0 0% 98%",
+      "popover": "0 0% 3.9%",
+      "popover_foreground": "0 0% 98%",
+      "primary": "354.44 71.3% 47.9%",
+      "primary_foreground": "0 85.7% 97.3%",
+      "secondary": "0 0% 14.9%",
+      "secondary_foreground": "0 0% 98%",
+      "muted": "0 0% 14.9%",
+      "muted_foreground": "0 0% 63.9%",
+      "accent": "0 0% 14.9%",
+      "accent_foreground": "0 0% 98%",
+      "destructive": "0 62.8% 30.6%",
+      "destructive_foreground": "0 0% 98%",
+      "border": "0 0% 14.9%",
+      "input": "0 0% 14.9%",
+      "ring": "354.44 71.3% 47.9%",
+      "chart_1": "220 70% 50%",
+      "chart_2": "160 60% 45%",
+      "chart_3": "30 80% 55%",
+      "chart_4": "280 65% 60%",
+      "chart_5": "340 75% 55%"
+    }
+  },
+  "sections": [
+    {
+      "name": "Prematch",
+      "fields": [
+        {
+          "title": "Scouter Initials",
+          "description": "Enter the initials of the scouter.",
+          "type": "text",
+          "required": true,
+          "code": "scouter",
+          "formResetBehavior": "preserve",
+          "defaultValue": ""
+        },
+        {
+          "title": "Driver Station",
+          "description": "If you are scouting thE same driver station each match, choose here",
+          "type": "select",
+          "required": false,
+          "code": "driverStation",
+          "formResetBehavior": "preserve",
+          "defaultValue": "",
+          "choices": {
+            "R1": "Red 1",
+            "R2": "Red 2",
+            "R3": "Red 3",
+            "B1": "Blue 1",
+            "B2": "Blue 2",
+            "B3": "Blue 3"
+          }
+        },
+        {
+          "title": "Match Number",
+          "description": "Select the match number.",
+          "type": "TBA-match-number",
+          "required": true,
+          "code": "matchNumber",
+          "formResetBehavior": "increment",
+          "defaultValue": 1
+        },
+        {
+          "title": "Team & Robot Position",
+          "description": "Select team and robot position",
+          "type": "TBA-team-and-robot",
+          "required": true,
+          "code": "teamAndRobot",
+          "formResetBehavior": "reset",
+          "defaultValue": null
+        },
+        {
+          "title": "Starting Position",
+          "description": "The starting position of the robot.",
+          "type": "select",
+          "required": true,
+          "code": "startPos",
+          "formResetBehavior": "reset",
+          "defaultValue": "Not Chosen",
+          "choices": {
+            "1": "A. Outpost Trench",
+            "2": "B. Outpost Bump Favoring Trench",
+            "3": "C. Outpost Bump Favoring Hub",
+            "4": "D. Hub",
+            "5": "E. Depot Bump Favoring Hub",
+            "6": "F. Depot Bump Favoring Trench",
+            "7": "G. Depot Trench"
+          }
+        },
+        {
+          "title": "Field Layout: Red",
+          "description": "Reference diagram of the field",
+          "type": "image",
+          "required": false,
+          "code": "fieldLayoutR",
+          "formResetBehavior": "preserve",
+          "defaultValue": "https://i.ibb.co/7Jh1hZXL/Scouting-Field-Map-Layout.png",
+          "width": 300,
+          "height": 150,
+          "alt": "2026 FRC Field Layout Diagram"
+        },
+        {
+          "title": "Field Layout: Blue",
+          "description": "Reference diagram of the field",
+          "type": "image",
+          "required": false,
+          "code": "fieldLayoutB",
+          "formResetBehavior": "preserve",
+          "defaultValue": "https://i.ibb.co/Ldg8Jcbt/Scouting-Field-Map-Layout-2.png",
+          "width": 300,
+          "height": 150,
+          "alt": "2026 FRC Field Layout Diagram"
+        }
+      ]
+    },
+    {
+      "name": "Autonomous",
+      "fields": [
+        {
+          "title": "Actions",
+          "description": "Track actions performed during autonomous.",
+          "type": "action-tracker",
+          "required": false,
+          "code": "autoActions",
+          "formResetBehavior": "reset",
+          "defaultValue": null,
+          "mode": "hold",
+          "actions": [
+            {
+              "label": "Scoring",
+              "code": "scoring"
+            },
+            {
+              "label": "Ground Collect",
+              "code": "ground_collect"
+            },
+            {
+              "label": "Passing",
+              "code": "passing"
+            },
+            {
+              "label": "Stuck on Fuel",
+              "code": "Stuck on Fuel"
+            },
+            {
+              "label": "Climbing",
+              "code": "climbing"
+            }
+          ],
+          "timerDuration": 15
+        },
+        {
+          "title": "Collected From",
+          "description": "Where on the field did the robot collect fuel from?",
+          "type": "multi-select",
+          "required": true,
+          "code": "collectLocation",
+          "formResetBehavior": "reset",
+          "choices": {
+            "No Collection": "Didn't Collect Fuel",
+            "Midfield": "Collected from Midfield/Neutral Zone",
+            "Depot": "Collected from Depot",
+            "Outpost": "Collected from Outpost"
+          }
+        },
+        {
+          "title": "Climbed",
+          "description": "Did the robot climb during autonomous?",
+          "type": "select",
+          "required": true,
+          "code": "autoClimbed",
+          "formResetBehavior": "reset",
+          "defaultValue": "No",
+          "choices": {
+            "No": "Didn't Climb",
+            "Yes": "Climbed",
+            "F": "Failed Climb"
+          }
+        },
+        {
+          "title": "Where Climbed",
+          "description": "Where on the tower did the robot climb in autonomous?",
+          "type": "select",
+          "required": false,
+          "code": "autoClimbPos",
+          "formResetBehavior": "reset",
+          "defaultValue": "",
+          "choices": {
+            "No": "Didn't Climb",
+            "Dep": "(1) Outpost Side",
+            "Mid": "(2) Middle",
+            "Out": "(3) Depot Side"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Teleop",
+      "fields": [
+        {
+          "title": "Alliance won auto?",
+          "description": "Did your alliance win the autonomous period?",
+          "type": "boolean",
+          "required": true,
+          "code": "allianceWonAuto",
+          "formResetBehavior": "reset",
+          "defaultValue": false
+        },
+        {
+          "title": "Actions",
+          "description": "Track actions performed during teleop.",
+          "type": "action-tracker",
+          "required": false,
+          "code": "teleopActions",
+          "formResetBehavior": "reset",
+          "defaultValue": null,
+          "mode": "hold",
+          "actions": [
+            {
+              "label": "Scoring",
+              "code": "scoring"
+            },
+            {
+              "label": "Ground Collect",
+              "code": "ground_collect"
+            },
+            {
+              "label": "Passing",
+              "code": "passing"
+            },
+            {
+              "label": "Climbing",
+              "code": "climbing"
+            },
+            {
+              "label": "Defense",
+              "code": "defense"
+            },
+            {
+              "label": "Stuck on Fuel",
+              "code": "Stuck on Fuel"
+            },
+            {
+              "label": "Robot Inactive",
+              "code": "robot inactive"
+            }
+          ],
+          "timerDuration": 135
+        },
+        {
+          "title": "Total Penalities:",
+          "description": "How many penalties did this robot get?",
+          "type": "counter",
+          "required": true,
+          "code": "penaltyCount",
+          "formResetBehavior": "reset",
+          "defaultValue": 0,
+          "step": 1
+        }
+      ]
+    },
+    {
+      "name": "Endgame",
+      "fields": [
+        {
+          "title": "Climbed",
+          "description": "The level the robot climbed during endgame.",
+          "type": "select",
+          "required": true,
+          "code": "climbed",
+          "formResetBehavior": "reset",
+          "defaultValue": "",
+          "choices": {
+            "No": "Didn't Climb",
+            "L1": "Level 1",
+            "L2": "Level 2",
+            "L3": "Level 3",
+            "F1": "Failed Climb"
+          }
+        },
+        {
+          "title": "Where Climbed",
+          "description": "Where on the tower did the robot climb?",
+          "type": "select",
+          "required": false,
+          "code": "climbPos",
+          "formResetBehavior": "reset",
+          "defaultValue": "",
+          "choices": {
+            "No": "Didn't Climb",
+            "Dep": "(1) Outpost Side",
+            "Mid": "(2) Middle",
+            "Out": "(3) Depot Side"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Postmatch",
+      "fields": [
+        {
+          "title": "Scoring Accuracy (in 20% steps)",
+          "description": "Rate the robot's scoring effectiveness.",
+          "type": "range",
+          "required": false,
+          "code": "scoringAcc",
+          "formResetBehavior": "reset",
+          "defaultValue": 3,
+          "min": 0,
+          "max": 5,
+          "step": 1
+        },
+        {
+          "title": "Scored How?",
+          "description": "How did the robot score?",
+          "type": "select",
+          "required": true,
+          "code": "scoredHow",
+          "formResetBehavior": "reset",
+          "defaultValue": "",
+          "choices": {
+            "blank": "(blank)",
+            "driving": "While Driving",
+            "stationary": "While Stationary",
+            "against the hub": "Against the Hub",
+            "none": "No Scoring"
+          }
+        },
+        {
+          "title": "Passing Rating: (O if none)",
+          "description": "Did the robot pass? How?",
+          "type": "range",
+          "required": false,
+          "code": "passingRating",
+          "formResetBehavior": "reset",
+          "defaultValue": 0,
+          "min": 0,
+          "max": 5,
+          "step": 1
+        },
+        {
+          "title": "Problems/Issues",
+          "description": "Select the problems the robot had (if any).",
+          "type": "multi-select",
+          "required": false,
+          "code": "problems",
+          "formResetBehavior": "reset",
+          "choices": {
+            "No Show": "No Show",
+            "Brown Out": "Browned Out",
+            "Minor Foul T": "Minor Foul in Teleop",
+            "Major Foul T": "Major Foul in Teleop",
+            "Minor Foul A": "Minor Foul in Auto",
+            "Major Foul A": "Major Foul in Auto",
+            "Tipped": "Tipped/Fell Over",
+            "Mechanical Issue": "Mechanical Issue",
+            "Died": "Died",
+            "Died and Came Back": "Died and Came Back",
+            "Stuck over Fuel": "Got Stuck on Fuel",
+            "Yellow Card": "Yellow Card",
+            "Red Card": "Red Card"
+          }
+        },
+        {
+          "title": "Tags",
+          "description": "Add the tags if applicable to the robot for this match",
+          "type": "multi-select",
+          "required": false,
+          "code": "tags",
+          "formResetBehavior": "reset",
+          "choices": {
+            "Good Defense": "Good Defense",
+            "Bad Defense": "Bad Defense",
+            "Inneffective Defense": "Inneffective Defense",
+            "Slow Driving": "Slow Driving",
+            "Fast Driving": "Fast Driving",
+            "Fuel Dropped": "Fuel Dropped",
+            "Accurate Shots": "Accurate Shots",
+            "Inaccurate Shots": "Inaccurate Shots",
+            "Imprecise": "Imprecise",
+            "Slow Intake": "Slow Intake",
+            "Fast Intake": "Fast Intake",
+            "Slow Scoring": "Slow Scoring",
+            "Fast Scoring": "Fast Scoring"
+          }
+        },
+        {
+          "title": "Comments",
+          "type": "text",
+          "required": false,
+          "code": "co",
+          "formResetBehavior": "reset",
+          "defaultValue": "",
+          "min": 0,
+          "max": 100
+        }
+      ]
+    }
+  ]
+}
