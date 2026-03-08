@@ -118,13 +118,13 @@
           "formResetBehavior": "reset",
           "defaultValue": "Not Chosen",
           "choices": {
-            "1": "A. Outpost Trench",
-            "2": "B. Outpost Bump Favoring Trench",
-            "3": "C. Outpost Bump Favoring Hub",
-            "4": "D. Hub",
-            "5": "E. Depot Bump Favoring Hub",
-            "6": "F. Depot Bump Favoring Trench",
-            "7": "G. Depot Trench"
+            "OT": "A. Outpost Trench",
+            "OBFT": "B. Outpost Bump Favoring Trench",
+            "OBFH": "C. Outpost Bump Favoring Hub",
+            "H": "D. Hub",
+            "DBFH": "E. Depot Bump Favoring Hub",
+            "DBFT": "F. Depot Bump Favoring Trench",
+            "DT": "G. Depot Trench"
           }
         },
         {
@@ -187,7 +187,8 @@
               "code": "climbing"
             }
           ],
-          "timerDuration": 15
+          "timerDuration": 15,
+          "autoStopSeconds": 25
         },
         {
           "title": "Collected From",
@@ -207,7 +208,7 @@
           "title": "Climbed",
           "description": "Did the robot climb during autonomous?",
           "type": "select",
-          "required": true,
+          "required": false,
           "code": "autoClimbed",
           "formResetBehavior": "reset",
           "defaultValue": "No",
@@ -218,18 +219,18 @@
           }
         },
         {
-          "title": "Where Climbed",
+          "title": "Climbed Where?",
           "description": "Where on the tower did the robot climb in autonomous?",
           "type": "select",
           "required": false,
           "code": "autoClimbPos",
           "formResetBehavior": "reset",
-          "defaultValue": "",
+          "defaultValue": "No",
           "choices": {
             "No": "Didn't Climb",
-            "Dep": "(1) Outpost Side",
+            "Out": "(1) Outpost Side",
             "Mid": "(2) Middle",
-            "Out": "(3) Depot Side"
+            "Dep": "(3) Depot Side"
           }
         }
       ]
@@ -241,7 +242,7 @@
           "title": "Alliance won auto?",
           "description": "Did your alliance win the autonomous period?",
           "type": "boolean",
-          "required": true,
+          "required": false,
           "code": "allianceWonAuto",
           "formResetBehavior": "reset",
           "defaultValue": false
@@ -285,13 +286,14 @@
               "code": "robot inactive"
             }
           ],
-          "timerDuration": 135
+          "timerDuration": 135,
+          "autoStopSeconds": 150
         },
         {
           "title": "Total Penalities:",
           "description": "How many penalties did this robot get?",
           "type": "counter",
-          "required": true,
+          "required": false,
           "code": "penaltyCount",
           "formResetBehavior": "reset",
           "defaultValue": 0,
@@ -303,34 +305,34 @@
       "name": "Endgame",
       "fields": [
         {
-          "title": "Climbed",
+          "title": "Climbed?",
           "description": "The level the robot climbed during endgame.",
           "type": "select",
-          "required": true,
+          "required": false,
           "code": "climbed",
           "formResetBehavior": "reset",
-          "defaultValue": "",
+          "defaultValue": "No",
           "choices": {
             "No": "Didn't Climb",
             "L1": "Level 1",
             "L2": "Level 2",
             "L3": "Level 3",
-            "F1": "Failed Climb"
+            "F": "Failed Climb"
           }
         },
         {
-          "title": "Where Climbed",
+          "title": "Climbed Where?",
           "description": "Where on the tower did the robot climb?",
           "type": "select",
           "required": false,
           "code": "climbPos",
           "formResetBehavior": "reset",
-          "defaultValue": "",
+          "defaultValue": "No",
           "choices": {
             "No": "Didn't Climb",
-            "Dep": "(1) Outpost Side",
+            "Out": "(1) Outpost Side",
             "Mid": "(2) Middle",
-            "Out": "(3) Depot Side"
+            "Dep": "(3) Depot Side"
           }
         }
       ]
@@ -340,7 +342,7 @@
       "fields": [
         {
           "title": "Scoring Accuracy (in 20% steps)",
-          "description": "Rate the robot's scoring effectiveness.",
+          "description": "Rate the robot's scoring effectiveness. 0 for no scoring, 1 is 20%, 2 is 40%, etc.",
           "type": "range",
           "required": false,
           "code": "scoringAcc",
@@ -353,13 +355,11 @@
         {
           "title": "Scored How?",
           "description": "How did the robot score?",
-          "type": "select",
+          "type": "multi-select",
           "required": true,
           "code": "scoredHow",
           "formResetBehavior": "reset",
-          "defaultValue": "",
           "choices": {
-            "blank": "(blank)",
             "driving": "While Driving",
             "stationary": "While Stationary",
             "against the hub": "Against the Hub",
@@ -368,7 +368,7 @@
         },
         {
           "title": "Passing Rating: (O if none)",
-          "description": "Did the robot pass? How?",
+          "description": "Did the robot pass? How well? Rate in 20% increments.",
           "type": "range",
           "required": false,
           "code": "passingRating",
@@ -388,10 +388,10 @@
           "choices": {
             "No Show": "No Show",
             "Brown Out": "Browned Out",
-            "Minor Foul T": "Minor Foul in Teleop",
-            "Major Foul T": "Major Foul in Teleop",
-            "Minor Foul A": "Minor Foul in Auto",
-            "Major Foul A": "Major Foul in Auto",
+            "MinorFT": "Minor Foul in Teleop",
+            "MajorFT": "Major Foul in Teleop",
+            "MinorFA": "Minor Foul in Auto",
+            "MajorFA": "Major Foul in Auto",
             "Tipped": "Tipped/Fell Over",
             "Mechanical Issue": "Mechanical Issue",
             "Died": "Died",
@@ -417,11 +417,11 @@
             "Fuel Dropped": "Fuel Dropped",
             "Accurate Shots": "Accurate Shots",
             "Inaccurate Shots": "Inaccurate Shots",
-            "Imprecise": "Imprecise",
             "Slow Intake": "Slow Intake",
             "Fast Intake": "Fast Intake",
             "Slow Scoring": "Slow Scoring",
-            "Fast Scoring": "Fast Scoring"
+            "Fast Scoring": "Fast Scoring",
+            "Fast Climb": "Fast Climb"
           }
         },
         {
